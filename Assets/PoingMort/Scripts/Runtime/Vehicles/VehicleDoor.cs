@@ -1,3 +1,4 @@
+using PoingMort.Core;
 using UnityEngine;
 
 namespace PoingMort.Vehicles
@@ -29,14 +30,22 @@ namespace PoingMort.Vehicles
             m_Initialised = true;
         }
 
-        public void Open() { Init(); m_Target = 1f; }
+        public void Open()
+        {
+            Init();
+            if (m_Target < 0.5f && m_Open < 0.5f) GameAudio.DoorOpened(transform.position);
+            m_Target = 1f;
+        }
+
         public void Close() { Init(); m_Target = 0f; }
 
         void Update()
         {
             if (Mathf.Approximately(m_Open, m_Target)) return;
             float duration = m_Target > m_Open ? openDuration : closeDuration;
+            float before = m_Open;
             m_Open = Mathf.MoveTowards(m_Open, m_Target, Time.deltaTime / Mathf.Max(0.01f, duration));
+            if (before > 0f && m_Open <= 0f) GameAudio.DoorClosed(transform.position);
             float eased = m_Target > 0.5f ? 1f - (1f - m_Open) * (1f - m_Open) : m_Open * m_Open;
             transform.localRotation = m_Closed * Quaternion.AngleAxis(openAngle * eased, hingeAxis);
         }

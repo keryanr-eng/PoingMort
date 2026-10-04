@@ -262,6 +262,7 @@ namespace PoingMort.Player
                 else if (m_CandidateRefusal != BoardingRefusal.Occupied)
                 {
                     m_Candidate.Hail(m_Boarding.hailDuration);
+                    GameAudio.Whistle(transform.position + Vector3.up * 1.6f);
                     Notify("La voiture ralentit sans s'arrêter : rejoins la portière");
                 }
                 else Notify(BoardingRules.Describe(m_CandidateRefusal));

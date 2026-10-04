@@ -270,11 +270,13 @@ def building(name, m, width, floors, wall, ground="shop", depth=10.0, floor_h=3.
     # Ground floor contents
     if ground == "shop":
         o = openings[0]
-        recess(b, o[0], o[1], o[2], o[3], 0.12, m.frame_dark, m.glass)
         if interior:
-            # Lit interior card behind the glass
-            b.quad([(o[0], 0.9, o[2]), (o[1], 0.9, o[2]), (o[1], 0.9, o[3]), (o[0], 0.9, o[3])], m.interior(interior), [(0, 0), (1, 0), (1, 1), (0, 1)])
-            # Replace the glass with a semi-open frame: glass panes are thin bars so the interior reads
+            # Deep display window closed by the lit interior card (no opaque glass in front of it,
+            # and reveals as deep as the card so the hollow building is never visible).
+            recess(b, o[0], o[1], o[2], o[3], 0.9, m.frame_dark, m.interior(interior), back_uv=[(0, 0), (1, 0), (1, 1), (0, 1)])
+        else:
+            recess(b, o[0], o[1], o[2], o[3], 0.12, m.frame_dark, m.glass)
+        # Window bars
         for xx in (o[0] + (o[1] - o[0]) / 3, o[0] + 2 * (o[1] - o[0]) / 3):
             b.box((xx - 0.03, 0.06, o[2]), (xx + 0.03, 0.1, o[3]), m.frame_dark)
         d = openings[1]
@@ -518,7 +520,7 @@ def export(obj, name):
     with pm.ctx(obj, [obj]):
         bpy.ops.export_scene.fbx(filepath=path, use_selection=True, object_types={"MESH"}, apply_unit_scale=True,
                                  apply_scale_options="FBX_SCALE_ALL", axis_forward="-Z", axis_up="Y",
-                                 mesh_smooth_type="FACE", bake_anim=False, path_mode="STRIP")
+                                 mesh_smooth_type="FACE", bake_anim=False, path_mode="STRIP", bake_space_transform=True)
     return path
 
 

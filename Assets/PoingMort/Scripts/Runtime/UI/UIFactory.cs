@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using PoingMort.Core;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -111,6 +112,7 @@ namespace PoingMort.UI
             var button = rt.gameObject.AddComponent<Button>();
             button.transition = Selectable.Transition.None;
             button.targetGraphic = hit;
+            button.onClick.AddListener(() => GameAudio.Ui(true));
             if (onClick != null) button.onClick.AddListener(onClick);
 
             var bar = Panel(rt, "Accent", theme.accent, 0);
@@ -144,6 +146,7 @@ namespace PoingMort.UI
             colors.colorMultiplier = 1f;
             colors.fadeDuration = 0.08f;
             button.colors = colors;
+            button.onClick.AddListener(() => GameAudio.Ui(true));
             if (onClick != null) button.onClick.AddListener(onClick);
             var text = Label(rt, label, theme.Bold, fontSize, theme.text, TextAnchor.MiddleCenter);
             Stretch(text.rectTransform, 8f, 8f, 0f, 0f);
@@ -288,7 +291,12 @@ namespace PoingMort.UI
             Refresh();
         }
 
-        public void OnSelect(BaseEventData e) { m_Selected = true; Refresh(); }
+        public void OnSelect(BaseEventData e)
+        {
+            if (!m_Selected) GameAudio.Ui(false);
+            m_Selected = true;
+            Refresh();
+        }
         public void OnDeselect(BaseEventData e) { m_Selected = false; Refresh(); }
         public void OnPointerEnter(PointerEventData e)
         {

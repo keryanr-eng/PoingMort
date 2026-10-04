@@ -465,7 +465,7 @@ def main():
         bpy.ops.export_scene.fbx(filepath=fbx, use_selection=True, object_types={"MESH", "EMPTY"},
                                  apply_unit_scale=True, apply_scale_options="FBX_SCALE_ALL",
                                  axis_forward="-Z", axis_up="Y", use_mesh_modifiers=True,
-                                 mesh_smooth_type="FACE", bake_anim=False, path_mode="STRIP")
+                                 mesh_smooth_type="FACE", bake_anim=False, path_mode="STRIP", bake_space_transform=True)
     print("CAR OK", fbx, os.path.getsize(fbx), sum(len(o.data.vertices) for o in bpy.data.objects if o.type == "MESH"), "verts", flush=True)
 
     if "--preview" in sys.argv:

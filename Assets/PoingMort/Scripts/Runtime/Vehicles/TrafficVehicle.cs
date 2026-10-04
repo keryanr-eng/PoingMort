@@ -1,3 +1,4 @@
+using PoingMort.Core;
 using PoingMort.Traffic;
 using UnityEngine;
 
@@ -53,8 +54,13 @@ namespace PoingMort.Vehicles
         float m_SteerAngle;
         float m_LastHornTime = -10f;
 
+        float m_EngineVolume = 1f;
+        float m_HornVolume = 1f;
+
         void Awake()
         {
+            if (engineAudio != null) m_EngineVolume = engineAudio.volume;
+            if (hornAudio != null) m_HornVolume = hornAudio.volume;
             if (engineAudio != null && engineAudio.clip != null && !engineAudio.isPlaying)
             {
                 engineAudio.loop = true;
@@ -83,7 +89,10 @@ namespace PoingMort.Vehicles
                 if (w != null) w.localRotation = Quaternion.Euler(m_WheelAngle, m_SteerAngle, 0f);
 
             if (engineAudio != null)
+            {
                 engineAudio.pitch = enginePitchIdle + speed * enginePitchPerMps;
+                engineAudio.volume = m_EngineVolume * GameSettings.EffectsVolume;
+            }
         }
 
         public void Hail(float duration)
@@ -125,7 +134,11 @@ namespace PoingMort.Vehicles
         {
             if (Time.time - m_LastHornTime < 0.8f) return;
             m_LastHornTime = Time.time;
-            if (hornAudio != null && hornAudio.clip != null) hornAudio.Play();
+            if (hornAudio != null && hornAudio.clip != null)
+            {
+                hornAudio.volume = m_HornVolume * GameSettings.EffectsVolume;
+                hornAudio.Play();
+            }
         }
 
         public Transform GetDoorEntry(VehicleSide side) => side == VehicleSide.Left ? doorEntryLeft : doorEntryRight;
