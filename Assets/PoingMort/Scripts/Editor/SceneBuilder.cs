@@ -37,6 +37,9 @@ namespace PoingMort.EditorTools
         {
             try
             {
+                // Layers and URP first: materials are created for the active pipeline (never pink).
+                ProjectSetup.EnsureLayers();
+                ProjectSetup.EnsureUrp();
                 EditorUtility.DisplayProgressBar("Poing Mort", "Prefabs du décor…", 0.1f);
                 CityKit.BuildAll();
                 EditorUtility.DisplayProgressBar("Poing Mort", "Voiture…", 0.25f);

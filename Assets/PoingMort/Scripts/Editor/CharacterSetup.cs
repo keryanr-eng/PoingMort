@@ -197,7 +197,7 @@ namespace PoingMort.EditorTools
             // ---------------- Upper body layer (punches and guard over the legs of the base layer)
             ac.AddLayer("UpperBody");
             var layers = ac.layers;
-            layers[1].defaultWeight = 1f;
+            layers[1].defaultWeight = 0f; // weight driven by MecanimCharacterAnimator (0 while the layer is in "Empty")
             layers[1].avatarMask = UpperBodyMask();
             layers[1].blendingMode = AnimatorLayerBlendingMode.Override;
             ac.layers = layers;

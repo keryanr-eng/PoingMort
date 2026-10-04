@@ -69,8 +69,15 @@ namespace PoingMort.Characters
         static readonly int s_KO = Animator.StringToHash(CharacterAnimStates.KnockedOut);
         static readonly int s_Fallen = Animator.StringToHash(CharacterAnimStates.Fallen);
 
+        static readonly int s_UpperEmpty = Animator.StringToHash(CharacterAnimStates.UpperEmpty);
+
+        [Tooltip("Durées de fondu du calque haut du corps (s) : entrée d'un coup ou de la garde, retour au corps entier.")]
+        public float upperFadeIn = 0.06f;
+        public float upperFadeOut = 0.12f;
+
         float m_TimeScale = 1f;
         bool m_HasUpperLayer;
+        float m_UpperWeight;
 
         public Animator Animator => m_Animator;
 
@@ -83,6 +90,22 @@ namespace PoingMort.Characters
         }
 
         bool Ready => m_Animator != null && m_Animator.runtimeAnimatorController != null && m_Animator.isActiveAndEnabled;
+
+        /// <summary>
+        /// The upper-body layer only weighs in while a punch, a blocked hit or the guard plays on it:
+        /// its idle "Empty" state never touches the arms of the full-body animation.
+        /// </summary>
+        void Update()
+        {
+            if (!m_HasUpperLayer || !Ready) return;
+            int layer = CharacterAnimStates.UpperLayer;
+            bool active = m_Animator.IsInTransition(layer)
+                ? m_Animator.GetNextAnimatorStateInfo(layer).shortNameHash != s_UpperEmpty
+                : m_Animator.GetCurrentAnimatorStateInfo(layer).shortNameHash != s_UpperEmpty;
+            float duration = active ? upperFadeIn : upperFadeOut;
+            m_UpperWeight = Mathf.MoveTowards(m_UpperWeight, active ? 1f : 0f, Time.deltaTime / Mathf.Max(0.01f, duration));
+            m_Animator.SetLayerWeight(layer, m_UpperWeight);
+        }
 
         public override void SetLocomotion(float speed, Vector2 localDirection, bool grounded)
         {
