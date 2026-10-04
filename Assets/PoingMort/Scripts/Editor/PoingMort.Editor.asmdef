@@ -1,0 +1,20 @@
+{
+    "name": "PoingMort.Editor",
+    "rootNamespace": "PoingMort.EditorTools",
+    "references": [
+        "PoingMort.Runtime",
+        "Unity.InputSystem",
+        "UnityEngine.UI"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
