@@ -124,8 +124,9 @@ namespace PoingMort.EditorTools
         {
             EditorUtil.EnsureFolder(AnimFolder);
             string path = AnimFolder + $"/AC_{Capitalise(who)}.controller";
-            if (AssetDatabase.LoadAssetAtPath<AnimatorController>(path) != null) AssetDatabase.DeleteAsset(path);
-            var ac = AnimatorController.CreateAnimatorControllerAtPath(path);
+            var ac = AssetDatabase.LoadAssetAtPath<AnimatorController>(path);
+            if (ac == null) ac = AnimatorController.CreateAnimatorControllerAtPath(path);
+            else ResetController(ac, path); // rebuilt in place: the asset keeps its GUID (stable references across machines)
 
             var missing = CharacterAnimStates.RequiredClips.Where(c => !clips.ContainsKey(c)).ToList();
             if (missing.Count > 0)
@@ -224,6 +225,16 @@ namespace PoingMort.EditorTools
             EditorUtility.SetDirty(ac);
             AssetDatabase.SaveAssets();
             return ac;
+        }
+
+        /// <summary>Empties an existing controller (layers, parameters, states, blend trees) and gives it a fresh base layer.</summary>
+        static void ResetController(AnimatorController ac, string path)
+        {
+            foreach (var sub in AssetDatabase.LoadAllAssetsAtPath(path))
+                if (sub != null && sub != ac) UnityEngine.Object.DestroyImmediate(sub, true);
+            ac.layers = new AnimatorControllerLayer[0];
+            ac.parameters = new AnimatorControllerParameter[0];
+            ac.AddLayer("Base Layer");
         }
 
         static void AddChild(BlendTree tree, AnimationClip clip, float threshold)
