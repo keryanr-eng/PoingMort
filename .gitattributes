@@ -1,0 +1,61 @@
+# Normalize line endings so Windows, macOS and Linux (cloud sessions) produce identical diffs
+* text=auto
+
+# Unity YAML assets
+*.unity     text
+*.prefab    text
+*.asset     text
+*.meta      text
+*.mat       text
+*.anim      text
+*.controller text
+*.overrideController text
+*.physicMaterial text
+*.physicsMaterial2D text
+*.mask      text
+*.playable  text
+*.signal    text
+*.lighting  text
+*.shadergraph text
+*.shadersubgraph text
+*.inputactions text
+
+# Code
+*.cs        text diff=csharp
+*.shader    text
+*.hlsl      text
+*.cginc     text
+*.compute   text
+*.uss       text
+*.uxml      text
+*.json      text
+*.md        text
+
+# Binary files: never diff or merge
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.psd  binary
+*.tga  binary
+*.tif  binary
+*.tiff binary
+*.exr  binary
+*.hdr  binary
+*.fbx  binary
+*.obj  binary
+*.blend binary
+*.wav  binary
+*.mp3  binary
+*.ogg  binary
+*.aif  binary
+*.aiff binary
+*.mp4  binary
+*.mov  binary
+*.ttf  binary
+*.otf  binary
+*.dll  binary
+*.so   binary
+*.a    binary
+*.zip  binary
+*.7z   binary
