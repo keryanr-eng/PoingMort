@@ -1,0 +1,141 @@
+{
+  "buildings": {
+    "Bld_Epicerie": {
+      "width": 12.0,
+      "depth": 10.0,
+      "height": 10.500000000000002,
+      "floors": 3,
+      "ground": "shop"
+    },
+    "Bld_Laverie": {
+      "width": 10.0,
+      "depth": 10.0,
+      "height": 7.300000000000001,
+      "floors": 2,
+      "ground": "shop"
+    },
+    "Bld_Cafe": {
+      "width": 9.0,
+      "depth": 10.0,
+      "height": 10.500000000000002,
+      "floors": 3,
+      "ground": "shop"
+    },
+    "Bld_Residential": {
+      "width": 14.0,
+      "depth": 10.0,
+      "height": 13.700000000000001,
+      "floors": 4,
+      "ground": "door"
+    },
+    "Bld_ResidentialB": {
+      "width": 11.0,
+      "depth": 10.0,
+      "height": 10.500000000000002,
+      "floors": 3,
+      "ground": "door"
+    },
+    "Bld_Garage": {
+      "width": 12.0,
+      "depth": 10.0,
+      "height": 7.300000000000001,
+      "floors": 2,
+      "ground": "garage"
+    },
+    "Bld_Plain": {
+      "width": 8.0,
+      "depth": 10.0,
+      "height": 10.500000000000002,
+      "floors": 3,
+      "ground": "door"
+    },
+    "Bld_Tower1": {
+      "width": 16,
+      "depth": 14,
+      "height": 28.8
+    },
+    "Bld_Tower2": {
+      "width": 12,
+      "depth": 12,
+      "height": 38.400000000000006
+    },
+    "Bld_Tower3": {
+      "width": 18,
+      "depth": 14,
+      "height": 22.400000000000002
+    }
+  },
+  "props": {
+    "Prop_StreetLamp": {
+      "height": 5.5,
+      "light_offset": [
+        0.0,
+        -1.35,
+        5.15
+      ]
+    },
+    "Prop_Bench": {
+      "size": [
+        1.9,
+        0.5,
+        0.85
+      ]
+    },
+    "Prop_TrashBin": {
+      "radius": 0.3,
+      "height": 0.9
+    },
+    "Prop_Tree": {
+      "height": 5.2,
+      "trunk_radius": 0.2,
+      "planter": 1.4
+    },
+    "Prop_Hydrant": {
+      "height": 0.7
+    },
+    "Prop_Bollard": {
+      "height": 1.0
+    },
+    "Prop_Barrier": {
+      "width": 2.0,
+      "height": 1.05
+    },
+    "Prop_Fence": {
+      "width": 3.0,
+      "height": 2.2
+    },
+    "Prop_Crate": {
+      "size": 0.9
+    },
+    "Prop_Dumpster": {
+      "size": [
+        1.9,
+        1.1,
+        1.3
+      ]
+    },
+    "Prop_Floodlight": {
+      "height": 4.9,
+      "light_offset": [
+        0.0,
+        -0.4,
+        4.6
+      ]
+    },
+    "Prop_BusStop": {
+      "size": [
+        4.2,
+        1.1,
+        2.6
+      ]
+    },
+    "Prop_SignOneWay": {
+      "height": 2.6
+    },
+    "Prop_Wall": {
+      "width": 4.0,
+      "height": 3.55,
+      "thickness": 0.3
+    }
+  }
+}

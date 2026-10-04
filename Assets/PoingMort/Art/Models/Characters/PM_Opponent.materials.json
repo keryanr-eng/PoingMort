@@ -1,0 +1,154 @@
+{
+  "character": "opponent",
+  "fbx": "PM_Opponent.fbx",
+  "meshes": {
+    "Body": [
+      "PM_Skin",
+      "PM_Eyes",
+      "PM_Hair"
+    ],
+    "Hair": [
+      "PM_Hair"
+    ],
+    "Top": [
+      "PM_Top"
+    ],
+    "Pants": [
+      "PM_Pants"
+    ],
+    "Shoes": [
+      "PM_Shoe",
+      "PM_Sole",
+      "PM_ShoeAccent"
+    ],
+    "Cap": [
+      "PM_Cap"
+    ]
+  },
+  "materials": [
+    {
+      "name": "PM_Skin",
+      "color_linear": [
+        0.8,
+        0.8,
+        0.8
+      ],
+      "roughness": 0.55,
+      "metallic": 0.0,
+      "texture": "T_Opponent_Skin.png"
+    },
+    {
+      "name": "PM_Eyes",
+      "color_linear": [
+        0.0423,
+        0.0194,
+        0.0091
+      ],
+      "roughness": 0.25,
+      "metallic": 0.0
+    },
+    {
+      "name": "PM_Hair",
+      "color_linear": [
+        0.0123,
+        0.0097,
+        0.0075
+      ],
+      "roughness": 0.65,
+      "metallic": 0.0
+    },
+    {
+      "name": "PM_Top",
+      "color_linear": [
+        0.807,
+        0.7913,
+        0.7529
+      ],
+      "roughness": 0.92,
+      "metallic": 0.0
+    },
+    {
+      "name": "PM_Pants",
+      "color_linear": [
+        0.0252,
+        0.0343,
+        0.0545
+      ],
+      "roughness": 0.9,
+      "metallic": 0.0
+    },
+    {
+      "name": "PM_Shoe",
+      "color_linear": [
+        0.0242,
+        0.0242,
+        0.0262
+      ],
+      "roughness": 0.6,
+      "metallic": 0.0
+    },
+    {
+      "name": "PM_Sole",
+      "color_linear": [
+        0.6867,
+        0.6584,
+        0.6038
+      ],
+      "roughness": 0.75,
+      "metallic": 0.0
+    },
+    {
+      "name": "PM_ShoeAccent",
+      "color_linear": [
+        0.1022,
+        0.1022,
+        0.1119
+      ],
+      "roughness": 0.7,
+      "metallic": 0.0
+    },
+    {
+      "name": "PM_Cap",
+      "color_linear": [
+        0.011,
+        0.011,
+        0.0123
+      ],
+      "roughness": 0.8,
+      "metallic": 0.0
+    }
+  ],
+  "clips": [
+    "BlockHit",
+    "CarEnter",
+    "CarExit",
+    "Cross",
+    "Dodge",
+    "Fall",
+    "FightIdle",
+    "FightStepBack",
+    "FightStepFwd",
+    "FightStepLeft",
+    "FightStepRight",
+    "GetUp",
+    "HitHeavy",
+    "HitLight",
+    "Hook",
+    "Idle",
+    "Jab",
+    "KO",
+    "Run",
+    "Seated",
+    "Sprint",
+    "Walk"
+  ],
+  "height": 1.829,
+  "vertices": {
+    "Body": 10209,
+    "Hair": 151,
+    "Top": 2772,
+    "Pants": 2984,
+    "Shoes": 1700,
+    "Cap": 422
+  }
+}
